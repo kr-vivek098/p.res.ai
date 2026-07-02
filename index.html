@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Analyzer & Mock Interview</title>
+  <meta name="description" content="Score your resume against ATS systems, get AI rewrite suggestions, practice mock interviews, and find your skill gaps.">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="logo">
+      <i class="fa-solid fa-brain" aria-hidden="true"></i>
+      AI Resume Analyzer
+    </div>
+
+    <nav aria-label="Section navigation">
+      <a href="#ats">ATS Score</a>
+      <a href="#resume">Resume AI</a>
+      <a href="#interview">Mock Interview</a>
+      <a href="#feedback">HR Feedback</a>
+      <a href="#skills">Skill Gap</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Build a resume that passes the scan and the interview.</h1>
+        <p>
+          Score your resume the way an ATS reads it, rewrite the weak lines,
+          rehearse real interview questions, and see exactly which skills
+          a job description expects that your resume doesn't show yet.
+        </p>
+        <button type="button" class="primary-btn" id="getStartedBtn">Get started</button>
+      </div>
+    </section>
+
+    <!-- ================= ATS SCORE ================= -->
+    <section id="ats" class="card" aria-labelledby="ats-heading">
+      <h2 id="ats-heading">
+        <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+        ATS resume score
+      </h2>
+      <p class="card-intro">Upload your resume to see how an applicant tracking system would score it.</p>
+
+      <form class="upload-box" id="atsForm">
+        <label class="visually-hidden" for="resumeUpload">Upload resume file</label>
+        <input
+          type="file"
+          id="resumeUpload"
+          name="resumeUpload"
+          accept=".pdf,.doc,.docx,.txt">
+        <button type="submit" id="analyzeBtn">Analyze resume</button>
+      </form>
+
+      <div class="progress-container">
+        <div class="progress-circle" role="img" aria-label="ATS score, 0 percent">
+          <span id="atsScore">0%</span>
+        </div>
+      </div>
+
+      <div class="results">
+        <h3>Analysis</h3>
+        <ul id="atsResults">
+          <li>Upload a resume to begin.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= RESUME IMPROVEMENT ================= -->
+    <section id="resume" class="card" aria-labelledby="resume-heading">
+      <h2 id="resume-heading">
+        <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+        AI resume improvement
+      </h2>
+      <p class="card-intro">Paste your resume text and get line-by-line rewrite suggestions.</p>
+
+      <label class="visually-hidden" for="resumeText">Resume text</label>
+      <textarea
+        id="resumeText"
+        name="resumeText"
+        placeholder="Paste your resume here..."></textarea>
+
+      <button type="button" id="improveBtn">Improve resume</button>
+
+      <div class="output">
+        <h3>Suggestions</h3>
+        <ul id="improvementList"></ul>
+      </div>
+    </section>
+
+    <!-- ================= MOCK INTERVIEW ================= -->
+    <section id="interview" class="card" aria-labelledby="interview-heading">
+      <h2 id="interview-heading">
+        <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+        AI mock interview
+      </h2>
+      <p class="card-intro">Pick a role and practice answering real interview questions.</p>
+
+      <div class="controls">
+        <label class="visually-hidden" for="role">Interview role</label>
+        <select id="role" name="role">
+          <option>Software Developer</option>
+          <option>Frontend Developer</option>
+          <option>Backend Developer</option>
+          <option>Full Stack Developer</option>
+          <option>Java Developer</option>
+          <option>Python Developer</option>
+          <option>Data Analyst</option>
+          <option>UI/UX Designer</option>
+          <option>HR</option>
+        </select>
+        <button type="button" id="startInterview">Start interview</button>
+      </div>
+
+      <div class="question-box">
+        <h3>Interview question</h3>
+        <p id="question">Click Start Interview</p>
+      </div>
+
+      <label class="visually-hidden" for="answer">Your answer</label>
+      <textarea
+        id="answer"
+        name="answer"
+        placeholder="Write your answer here..."></textarea>
+
+      <button type="button" id="submitAnswer">Submit answer</button>
+    </section>
+
+    <!-- ================= HR FEEDBACK ================= -->
+    <section id="feedback" class="card" aria-labelledby="feedback-heading">
+      <h2 id="feedback-heading">
+        <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+        HR feedback
+      </h2>
+      <p class="card-intro">Get a hiring-manager style read on your interview answers.</p>
+
+      <button type="button" id="feedbackBtn">Generate feedback</button>
+
+      <div class="feedback-box">
+        <ul id="feedbackList"></ul>
+      </div>
+    </section>
+
+    <!-- ================= SKILL GAP ================= -->
+    <section id="skills" class="card" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">
+        <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+        Skill gap analysis
+      </h2>
+      <p class="card-intro">Paste a job description to see which required skills are missing from your resume.</p>
+
+      <label class="visually-hidden" for="jobDescription">Job description</label>
+      <textarea
+        id="jobDescription"
+        name="jobDescription"
+        placeholder="Paste job description"></textarea>
+
+      <button type="button" id="skillBtn">Analyze skills</button>
+
+      <div class="skill-output">
+        <h3>Missing skills</h3>
+        <ul id="skillList"></ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>© 2026 AI Resume Analyzer &amp; Mock Interview Portal</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
